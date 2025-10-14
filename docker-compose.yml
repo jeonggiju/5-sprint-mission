@@ -1,0 +1,36 @@
+services:
+  app:
+    container_name: discodeit-app
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    image: discodeit-app:local
+    ports:
+      - "8081:80"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JVM_OPTS: ""
+      PROJECT_NAME: discodeit
+      PROJECT_VERSION: 1.2-M8
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./discodeit-storage:/app/.discodeit/storage
+    depends_on:
+      - db
+
+  db:
+    container_name: discodeit-db
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    image: discodeit-db:local
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "8082:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

@@ -3,7 +3,7 @@ spring:
     name: Discodeit
     version: 1.7.0
   profiles:
-    active: dev
+    active: ${SPRING_BOOT_PROFILE_ACTIVE:dev}
   servlet:
     multipart:
       maxFileSize: 10MB
@@ -33,7 +33,7 @@ springdoc:
 info:
   app:
     name: ${spring.application.name}
-    description: Blog service (Actuator info)
+    description: discodeit (Actuator info)
     version: ${spring.application.version:1.0.0}
   runtime:
     profile: ${spring.profiles.active}

@@ -1,9 +1,11 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/discodeit
-    username: discodeit_user
-    password: discodeit1234
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB:discodeit}
+    username: ${POSTGRES_USER:discodeit_user}
+    password: ${POSTGRES_PASSWORD:discodeit1234}
+
+
   jpa:
     hibernate:
       ddl-auto: validate
@@ -11,13 +13,13 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
-    boot:
-      admin:
-        client:
-          url: ${SPRING_BOOT_ADMIN_CLIENT_URL}
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
 
 server:
-  port: 8080
+  port: 80
 
 logging:
   level:
