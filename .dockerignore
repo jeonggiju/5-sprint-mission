@@ -1,0 +1,59 @@
+# ==============================
+# 기본 설정 파일
+# ==============================
+.git
+.gitignore
+.gitattributes
+.dockerignore
+Dockerfile-app
+docker-compose.yml
+
+# ==============================
+# 빌드 및 캐시 관련
+# ==============================
+.gradle/
+build/
+out/
+*.jar
+*.war
+
+# ==============================
+# IDE / OS 관련
+# ==============================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# ==============================
+# 로그, 캐시, 임시 파일
+# ==============================
+*.log
+logs/
+tmp/
+*.tmp
+.cache/
+bin/
+*.class
+
+# ==============================
+# 환경변수 및 민감정보
+# ==============================
+.env
+.env.*
+application-*.yml
+application-*.yaml
+application-*.properties
+
+# ==============================
+# 테스트 결과물
+# ==============================
+test-output/
+surefire-reports/
+jacoco.exec
+
+postgres-data
+discodeit-storage
