@@ -21,9 +21,6 @@ spring:
       client:
         url: http://localhost:9090
 
-server:
-  port: 8080
-
 logging:
   level:
     # Hibernate SQL
